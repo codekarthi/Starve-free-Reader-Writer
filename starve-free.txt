@@ -1,0 +1,36 @@
+The following is the pseudo code for the starve-free readers writers problem.
+
+semaphore mutex =1, wrt=1, access=1;
+int readcount=0;
+
+Reader Process:
+      wait(access);
+      wait(mutex);
+      readcount++;
+      if(readcount==1){
+      wait(wrt);
+      }
+      signal(mutex);
+      signal(access);
+
+
+
+      <<<critical section reading process >>>
+
+      wait(mutex);
+      readcount--;
+      if(readcount==0){
+      signal(wrt);
+      }
+      signal(readcount);
+
+
+
+Writer Process:
+       wait(access);
+       wait(wrt);
+
+       <<<Writing proccess>>>
+
+       signal(wrt);
+       signal(access);
