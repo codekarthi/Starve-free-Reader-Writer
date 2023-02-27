@@ -15,13 +15,13 @@
 ###  3. Lets say R-Reader process and W-Writer process.
 ###                    The proccesses arE as follows RRRWRRR
 ###                    In the  Reader process:
-###                                     mutex semaphore will do its job to correctly count the number of varialbles.
-###                                     wrt will become zero if readcount=1 and the write proccess will wait.
-###                                     After all the reader process will read then readcount =0 and wrt will become one .
+>                                     mutex semaphore will do its job to correctly count the number of varialbles.
+>                                     wrt will become zero if readcount=1 and the write proccess will wait.
+>                                     After all the reader process will read then readcount =0 and wrt will become one .
 ###                    In the Writer process:
-###                                     After all readers before writer process is initialised are completed then writer wii write and update the data.
+>                                     After all readers before writer process is initialised are completed then writer wii write and update the data.
 ###                    Use of access semaphore:
-###                                     In the above example when the W has come then access becomes zero and until the write process is completed all readers after                                            writer will wait.By this we can remove the starvation. My logic is FCFS (First Come First Serve).
+>                                     In the above example when the W has come then access becomes zero and until the write process is completed all readers after                                            writer will wait.By this we can remove the starvation. My logic is FCFS (First Come First Serve).
                     
                                      
                                    
