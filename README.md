@@ -7,7 +7,7 @@
 ### 3. No starvation should be present.
 ## The following is the explanation of the psuedocode for starve-free reader-writer problem
 ###  1. There are three semaphores 
-###              a) mutex : mutual exclusion for updating readcount variable (binary semaphore)
+> ###              a) mutex : mutual exclusion for updating readcount variable (binary semaphore)
 ###              b) wrt   : mutual exclusion semaphore for writers
 ###              c) access: To maintain the order in which the proccesses come (TO MAINTAIN STARVE-FREE ).
 ###     All are initialised to one.
