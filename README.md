@@ -22,8 +22,11 @@
 >                     After all readers before writer process is initialised are completed then writer wii write and update the data.
 ###                    Use of access semaphore:
 >                      In the above example when the W has come then access becomes zero and until the write process is completed all readers after                     
->                      writer will wait.By this we can remove the starvation. My logic is FCFS (First Come First Serve).                    
-                                     
+>                      writer will wait.By this we can remove the starvation. My logic is FCFS (First Come First Serve). 
+
+## Example:
+###       In the ready queue the processes are RRWRRR.
+###                                     Now first R will change the readcount to one and it will make the writer wait. Like this the reaming two readers will come and change the readcount. Now when the W comes then the access semaphore becomes 0 and the two readers will wait until the writer has updated. After the three readers has completed the readcount becomes zero which signals the writer process . Then the writer will upadate and the make access semaphore 1. Finally the last two readers will come and read the data in the same way as the first three readers. 
                                    
                     
 
