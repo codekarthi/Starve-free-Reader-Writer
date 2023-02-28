@@ -1,36 +1,42 @@
-The following is the pseudo code for the starve-free readers writers problem.
+//The following is the pseudo code for the starve-free readers writers problem.
+// it is based on the FCFS process scheduling. 
+
 
 semaphore mutex =1, wrt=1, access=1;
 int readcount=0;
 
 Reader Process:
-      wait(access);
-      wait(mutex);
-      readcount++;
-      if(readcount==1){
-      wait(wrt);
+  while(true){
+      wait(access);                                                                          // To see the order in which processes are coming
+      wait(mutex);                                                                           // to make changes in the readcount variable
+      readcount++; 
+      if(readcount==1){                                                                      // if you are the first reader 
+      wait(wrt);                                                                             // writer must wait
       }
-      signal(mutex);
-      signal(access);
+      signal(mutex);                                                                         // signalling the next reader to change the readcount variable
+      signal(access);                                                                        // signalling the next process to come
 
 
 
       <<<critical section reading process >>>
 
-      wait(mutex);
+      wait(mutex);                                                                           // to access the readcount variable
       readcount--;
-      if(readcount==0){
-      signal(wrt);
+      if(readcount==0){                                                                      // if all readers have completed the reading
+      signal(wrt);                                                                           // signal the writer that they can update
       }
-      signal(readcount);
+      signal(mutex);                                                                         // next reader can access the readcount variable
+  }
 
 
 
 Writer Process:
-       wait(access);
-       wait(wrt);
+   while(true){
+       wait(access);                                                   // if there is a writer then the readers after the writer should wait until writer completes
+       wait(wrt);                                                      // if all readers before the writer has completed reading then only it should write
 
        <<<Writing proccess>>>
 
-       signal(wrt);
-       signal(access);
+       signal(wrt);                                                   // signalling that writer has updated
+       signal(access);                                                // signalling next process can come
+    }
