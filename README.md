@@ -1,4 +1,6 @@
 # Starve-free-Reader-Writer
+###name : Velavali Venkata Karthikeya Sai Vydhik
+###enrollment no.: 21114110
 
 ## The Problem is:
 ### 1. Reader: Can only read the data.
